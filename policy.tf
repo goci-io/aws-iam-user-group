@@ -28,7 +28,6 @@ data "aws_iam_policy_document" "with_mfa" {
     ]
     actions = [
       "iam:CreateVirtualMFADevice",
-      "iam:DeleteVirtualMFADevice",
       "iam:EnableMFADevice",
       "iam:ResyncMFADevice",
     ]
@@ -43,6 +42,7 @@ data "aws_iam_policy_document" "with_mfa" {
       "iam:ChangePassword",
       "iam:CreateAccessKey",
       "iam:DeleteAccessKey",
+      "iam:DeleteVirtualMFADevice",
       "iam:GetAccessKeyLastUsed",
       "iam:ListAccessKeys",
       "iam:UpdateAccessKey",
@@ -75,6 +75,7 @@ data "aws_iam_policy_document" "with_mfa" {
       "iam:ListUsers",
       "iam:ListVirtualMFADevices",
       "iam:ResyncMFADevice",
+      "iam:GetAccountPasswordPolicy",
     ]
 
     condition {
