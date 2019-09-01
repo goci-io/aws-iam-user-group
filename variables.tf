@@ -29,3 +29,9 @@ variable "additional_statements" {
   default     = []
   description = "Attaches additional statements to the policies and allows the permissions if MFA is enabled"
 }
+
+variable "users_path" {
+  type        = string
+  default     = "*"
+  description = "A users ARN path matcher to put in place in addition to user/<name>. You can also apply nested paths and wildcards"
+}
