@@ -76,6 +76,7 @@ data "aws_iam_policy_document" "with_mfa" {
       "iam:ListPolicies",
       "iam:ListRolePolicies",
       "iam:ListGroupPolicies",
+      "iam:GetPolicyVersion",
       "iam:ListAttachedRolePolicies",
       "iam:ListAttachedGroupPolicies",
     ]
