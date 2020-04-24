@@ -32,6 +32,6 @@ variable "additional_statements" {
 
 variable "users_path" {
   type        = string
-  default     = "*"
+  default     = ""
   description = "A users ARN path matcher to put in place in addition to user/<name>. You can also apply nested paths and wildcards"
 }

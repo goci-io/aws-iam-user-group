@@ -12,20 +12,20 @@ data "aws_iam_policy_document" "with_mfa" {
   statement {
     effect  = "Allow"
     actions = ["iam:ListMFADevices"]
-    resources = [
+    resources = distinct([
       format("arn:aws:iam::%s:mfa/*", data.aws_caller_identity.current.account_id),
       format("arn:aws:iam::%s:user/&{aws:username}", data.aws_caller_identity.current.account_id),
-      format("arn:aws:iam::%s:user/%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
-    ]
+      format("arn:aws:iam::%s:user%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
+    ])
   }
 
   statement {
     effect = "Allow"
-    resources = [
+    resources = distinct([
       format("arn:aws:iam::%s:mfa/&{aws:username}", data.aws_caller_identity.current.account_id),
       format("arn:aws:iam::%s:user/&{aws:username}", data.aws_caller_identity.current.account_id),
-      format("arn:aws:iam::%s:user/%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
-    ]
+      format("arn:aws:iam::%s:user%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
+    ])
     actions = [
       "iam:CreateVirtualMFADevice",
       "iam:EnableMFADevice",
@@ -55,11 +55,11 @@ data "aws_iam_policy_document" "with_mfa" {
       "iam:UpdateSSHPublicKey",
       "iam:UploadSSHPublicKey",
     ]
-    resources = [
+    resources = distinct([
       format("arn:aws:iam::%s:mfa/&{aws:username}", data.aws_caller_identity.current.account_id),
       format("arn:aws:iam::%s:user/&{aws:username}", data.aws_caller_identity.current.account_id),
-      format("arn:aws:iam::%s:user/%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
-    ]
+      format("arn:aws:iam::%s:user%s/&{aws:username}", data.aws_caller_identity.current.account_id, var.users_path),
+    ])
 
     condition {
       values   = ["true"]
