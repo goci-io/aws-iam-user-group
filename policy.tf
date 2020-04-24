@@ -69,7 +69,7 @@ data "aws_iam_policy_document" "with_mfa" {
   }
 
   statement {
-    effect  = "Allow"
+    effect = "Allow"
     actions = [
       "iam:ListGroups",
       "iam:ListRoles",
