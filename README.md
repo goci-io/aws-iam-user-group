@@ -2,7 +2,7 @@
 
 #### Maintained by [@goci-io/prp-terraform](https://github.com/orgs/goci-io/teams/prp-terraform)
 
-![Terraform Validate](https://github.com/goci-io/aws-iam-user-group/workflows/Terraform%20Validate/badge.svg)
+![terraform](https://github.com/goci-io/aws-iam-user-group/workflows/terraform/badge.svg?branch=master)
 
 This module creates a group for humans interacting with AWS. It only allows users without MFA enabled to change their MFA device and denies all access until MFA is enabled.
 Once a user is logged in with MFA enabled the user will be able to perform actions defined by the `additional_statements` and they will be granted access to change their own security credentials and read policies attached to them via groups, roles or directly.
